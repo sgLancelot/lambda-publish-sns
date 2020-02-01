@@ -1,15 +1,16 @@
+// need environment variables for SNS_MESSAGE and SNS_TOPIC_ARN
 const AWS = require('aws-sdk')
 const sns = new AWS.SNS()
 
 const params = {
-    Message: 'TESTING ZK ZK ZK ZK',
+    Message: process.env.SNS_MESSAGE,
     MessageAttributes: {
       'MsgAttrName': {
         DataType: 'String',
-        StringValue: 'String'
+        StringValue: 'String' 
       }
     },
-    TopicArn: 'arn:aws:sns:ap-southeast-1:735372186971:singtel-cast-monthly' // put topic name here!
+    TopicArn: process.env.SNS_TOPIC_ARN // put topic name here!
 }
 
 exports.handler = () => {
